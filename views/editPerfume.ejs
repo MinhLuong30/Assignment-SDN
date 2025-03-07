@@ -1,0 +1,112 @@
+<h1 class="title">Edit Perfume</h1>
+<form action="/perfume/<%= perfume._id %>/edit" method="POST">
+  <div class="field">
+    <label class="label">Perfume Name</label>
+    <div class="control">
+      <input
+        class="input"
+        type="text"
+        name="perfumeName"
+        value="<%= perfume.perfumeName %>"
+        required
+      />
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">URI</label>
+    <div class="control">
+      <input
+        class="input"
+        type="text"
+        name="uri"
+        value="<%= perfume.uri %>"
+        required
+      />
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Price</label>
+    <div class="control">
+      <input
+        class="input"
+        type="number"
+        name="price"
+        value="<%= perfume.price %>"
+        required
+      />
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Concentration</label>
+    <div class="control">
+      <div class="select">
+        <select name="concentration" required>
+          <option value="EDP" <%= perfume.concentration === 'EDP' ? 'selected' : '' %>>EDP</option>
+          <option value="EDT" <%= perfume.concentration === 'EDT' ? 'selected' : '' %>>EDT</option>
+          <option value="EDC" <%= perfume.concentration === 'EDC' ? 'selected' : '' %>>EDC</option>
+          <option value="Parfum" <%= perfume.concentration === 'Parfum' ? 'selected' : '' %>>Parfum</option>
+          <option value="EF" <%= perfume.concentration === 'EF' ? 'selected' : '' %>>EF</option>
+          <option value="Extrait" <%= perfume.concentration === 'Extrait' ? 'selected' : '' %>>Extrait</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Ingredients</label>
+    <div class="control">
+      <input
+        class="input"
+        type="text"
+        name="ingredients"
+        value="<%= perfume.ingredients %>"
+        required
+      />
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Description</label>
+    <div class="control">
+      <textarea class="textarea" name="description" required>
+ <%= perfume.description %></textarea
+      >
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Volume</label>
+    <div class="control">
+      <input
+        class="input"
+        type="text"
+        name="volume"
+        value="<%= perfume.volume %>"
+        required
+      />
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Target Audience</label>
+    <div class="control">
+      <div class="select">
+        <select name="targetAudience" required>
+          <option value="Male" <%= perfume.targetAudience === 'Male' ? 'selected' : '' %>>Male</option>
+          <option value="Female" <%= perfume.targetAudience === 'Female' ? 'selected' : '' %>>Female</option>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Brand</label>
+    <div class="control">
+      <div class="select">
+        <select name="brandId" required>
+          <% brands.forEach(function(brand) { %>
+          <option value="<%= brand._id %>" <%= brand._id.equals(perfume.brand._id) ? 'selected' : '' %>><%= brand.brandName %></option>
+          <% }); %>
+        </select>
+      </div>
+    </div>
+  </div>
+  <div class="control">
+    <button type="submit" class="button is-primary">Update</button>
+  </div>
+</form>

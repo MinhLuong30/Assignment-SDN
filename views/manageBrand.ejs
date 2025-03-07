@@ -1,0 +1,34 @@
+<h1 class="title">Manage Brands</h1>
+<a href="/brand/new" class="button is-primary">Add New Brand</a>
+<table class="table is-fullwidth mt-5">
+  <thead>
+    <tr>
+      <th>Brand ID</th>
+      <th>Brand Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% brands.forEach(function(brand) { %>
+    <tr>
+      <td><%= brand._id %></td>
+      <td><%= brand.brandName %></td>
+      <td>
+        <form
+          action="/brand/<%= brand._id %>/delete"
+          method="POST"
+          style="display: inline"
+          onsubmit="return confirm('Are you sure you want to delete this brand?');"
+        >
+          <button type="submit" class="button is-small is-danger">
+            Delete
+          </button>
+        </form>
+        <a href="/brand/<%= brand._id %>/edit" class="button is-small is-info"
+          >Edit</a
+        >
+      </td>
+    </tr>
+    <% }); %>
+  </tbody>
+</table>

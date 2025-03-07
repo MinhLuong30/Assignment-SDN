@@ -1,0 +1,24 @@
+<div class="columns is-centered">
+  <div class="column is-half">
+    <h1 class="title has-text-centered">Edit Brand</h1>
+    <form action="/brand/<%= brand._id %>/edit" method="POST">
+      <div class="field">
+        <label class="label">Brand Name</label>
+        <div class="control">
+          <input
+            class="input"
+            type="text"
+            name="brandName"
+            value="<%= brand.brandName %>"
+            required
+          />
+        </div>
+      </div>
+      <div class="control">
+        <button type="submit" class="button is-primary is-fullwidth">
+          Update
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

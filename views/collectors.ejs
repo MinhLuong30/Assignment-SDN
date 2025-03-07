@@ -1,0 +1,17 @@
+<h1 class="title">Member List</h1>
+<table class="table is-fullwidth">
+  <thead>
+    <tr>
+      <th>Member Id</th>
+      <th>Member's name</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% members.forEach(function(member) { %>
+    <tr>
+      <td><%= member._id %></td>
+      <td><%= member.memberName %></td>
+    </tr>
+    <% }); %>
+  </tbody>
+</table>

@@ -1,0 +1,60 @@
+<div>
+  <form action="/" method="GET" class="is-flex is-justify-content-end mt-5">
+    <div class="field has-addons">
+      <div class="control">
+        <input
+          class="input"
+          type="text"
+          name="search"
+          placeholder="Search for perfumes"
+          value="<%= search %>"
+        />
+      </div>
+      <div class="control">
+        <div class="select">
+          <select name="brand">
+            <option value="">All Brands</option>
+            <% perfumes.forEach(perfume => { %>
+            <option value="<%= perfume.brand._id %>" <%= perfume.brand._id == selectedBrand ? 'selected' : '' %>> <%= perfume.brand.brandName %></option>
+            <% }); %>
+          </select>
+        </div>
+      </div>
+      <div class="control">
+        <button class="button is-info" type="submit">Search</button>
+      </div>
+    </div>
+  </form>
+
+  <div class="columns is-multiline mt-5">
+    <% perfumes.forEach(perfume => { %>
+    <div class="column is-half">
+      <div class="card card-home">
+        <% if (perfume.concentration === 'Extrait') { %>
+        <div class="ribbon">Extrait</div>
+        <% } %>
+
+        <div class="card-image">
+          <figure class="image is-4by3">
+            <img src="<%= perfume.uri %>" alt="Placeholder image" class="img-perfume" />
+          </figure>
+        </div>
+        <div class="card-content">
+          <div class="media">
+            <div class="media-content">
+              <p class="title is-4"><%= perfume.perfumeName %></p>
+            </div>
+          </div>
+          <div class="content">
+            <p><%= perfume.description %></p>
+            <p>Volume: <%= perfume.volume %>ml</p>
+            <p>Target Audience: <%= perfume.targetAudience %></p>
+            <p>Brand: <%= perfume.brand.brandName %></p>
+          </div>
+            <a href="perfume/<%= perfume._id %>" class="button is-primary"> View Detail</a>
+        </div>
+      </div>
+    </div>
+    <% }); %>
+  </div>
+</div>

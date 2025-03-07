@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title><%= title %></title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css"
+    />
+    <style>
+      .card {
+        margin-bottom: 20px;
+      }
+      .card-home{
+        height: 100%;
+      }
+      .ribbon {
+        position: absolute;
+        top: 10px;
+        left: 90%;
+        background: red;
+        color: white;
+        padding: 5px 15px;
+        font-size: 14px;
+        font-weight: bold;
+        transform: rotate(45deg);
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        z-index: 50;
+      }
+
+    </style>
+  </head>
+  <body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+
+
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a class="navbar-item" href="/"> Home </a>
+          <a class="navbar-item"> Documentation </a>
+           <% if (session && session.user && session.user.isAdmin) { %>
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link"> Manage </a>
+              <div class="navbar-dropdown">
+                <a class="navbar-item" href="/brand"> Manage Brand </a>
+                <a class="navbar-item" href="/perfume"> Manage Perfume </a>
+                <a class="navbar-item" href="/member/collectors"> Manage User </a>
+              </div>
+            </div> 
+            <% } else { %> <% } %>
+
+        </div>
+
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <% if(session && session.user) {%>
+            <p>
+              Welcome, <a href="/member/<%= session.user._id %>/update"> <%= session.user.memberName %> </a> |
+              <form action="/auth/logout" method="POST" style="display:inline;">
+                <button type="submit" class="button is-light">Logout</button>
+              </form>
+            </p>
+            <% } else { %>
+            <div class="buttons">
+              <a class="button is-primary" href="/auth/register">
+                <strong>Sign up</strong>
+              </a>
+              <a class="button is-light" href="/auth/login"> Log in </a>
+            </div>
+            <% } %>
+          </div>
+        </div>
+      </div>
+    </nav>
+
+    <main>
+      
+      <div class="container">
+        <% if (error_msg && error_msg.length > 0) { %>
+          <div class="notification is-danger"><%= error_msg %></div>
+          <% } %> <% if (success_msg && success_msg.length > 0) { %>
+          <div class="notification is-success"><%= success_msg %></div>
+          <% } %>
+        <%- body %>
+      </div>
+    </main>
+  </body>
+</html>

@@ -1,0 +1,86 @@
+<div class="columns is-centered">
+  <div class="column is-half">
+    <h1 class="title has-text-centered">Add New Perfume</h1>
+    <form action="/perfume" method="POST">
+      <div class="field">
+        <label class="label">Perfume Name</label>
+        <div class="control">
+          <input class="input" type="text" name="perfumeName" required />
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">URI</label>
+        <div class="control">
+          <input class="input" type="text" name="uri" required />
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Price</label>
+        <div class="control">
+          <input class="input" type="number" name="price" required />
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Concentration</label>
+        <div class="control">
+          <div class="select">
+            <select name="concentration">
+              <option value="EDP">EDP</option>
+              <option value="EDT">EDT</option>
+              <option value="EDC">EDC</option>
+              <option value="Parfum">Parfum</option>
+              <option value="EF">EF</option>
+              <option value="Extrait">Extrait</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Ingredients</label>
+        <div class="control">
+          <input class="input" type="text" name="ingredients" required />
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Description</label>
+        <div class="control">
+          <textarea class="textarea" name="description" required></textarea>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Volume</label>
+        <div class="control">
+          <input class="input" type="number" name="volume" required />
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Target Audience</label>
+        <div class="control">
+          <div class="select">
+            <select name="targetAudience">
+              <option value="Male">Male</option>
+              <option value="Female">Female</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Brand</label>
+        <div class="control">
+          <div class="select">
+            <select name="brandId" required>
+              <% brands.forEach(function(brand) { %>
+              <option value="<%= brand._id %>"><%= brand.brandName %></option>
+              <% }); %>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="control">
+        <button type="submit" class="button is-primary is-fullwidth">
+          Add
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

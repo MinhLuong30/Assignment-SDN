@@ -1,0 +1,68 @@
+<div class="columns is-centered">
+  <div class="column is-half">
+    <h1 class="title has-text-centered">Member Profile</h1>
+    <form action="/member/<%= user._id %>/update" method="POST" id="updateForm">
+      <div class="field">
+        <label class="label">Name</label>
+        <div class="control">
+          <input
+            class="input"
+            type="text"
+            name="memberName"
+            value="<%= user.memberName %>"
+            required
+            disabled
+          />
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Year of Birth</label>
+        <div class="control">
+          <input
+            class="input"
+            type="number"
+            name="yob"
+            value="<%= user.yob %>"
+            required
+            disabled
+          />
+        </div>
+      </div>
+      <div class="field">
+        <label class="label">Gender</label>
+        <div class="control">
+          <div class="select">
+            <select name="gender" required disabled>
+              <option value=true <%= user.gender === true ? 'selected' : '' %>>Male</option>
+              <option value=false <%= user.gender === false ? 'selected' : '' %>>Female</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="control">
+        <button type="button" class="button is-primary is-fullwidth" id="editButton">
+          Update
+        </button>
+        <button type="submit" class="button is-primary is-fullwidth" style="display: none;" id="submitButton">
+          Save Changes
+        </button>
+        <h3 class="has-text-centered">Or</h3>
+        <a
+          href="/member/<%= user._id %>/changePassword"
+          class="button is-primary is-fullwidth"
+          >Change password</a
+        >
+      </div>
+    </form>
+  </div>
+</div>
+<script>
+  document.getElementById('editButton').addEventListener('click', function() {
+    var inputs = document.querySelectorAll('#updateForm input, #updateForm select');
+    inputs.forEach(function(input) {
+      input.disabled = false;
+    });
+    document.getElementById('editButton').style.display = 'none';
+    document.getElementById('submitButton').style.display = 'block';
+  });
+</script>
