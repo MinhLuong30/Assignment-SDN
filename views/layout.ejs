@@ -8,6 +8,10 @@
       rel="stylesheet"
       href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css"
     />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    />
     <style>
       .card {
         margin-bottom: 20px;
@@ -37,8 +41,7 @@
 
       <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
-          <a class="navbar-item" href="/"> Home </a>
-          <a class="navbar-item"> Documentation </a>
+          <a class="navbar-item" href="/"> SDN302 Official Perfume Store </a>
            <% if (session && session.user && session.user.isAdmin) { %>
             <div class="navbar-item has-dropdown is-hoverable">
               <a class="navbar-link"> Manage </a>
@@ -56,14 +59,17 @@
           <div class="navbar-item">
             <% if(session && session.user) {%>
             <p>
-              Welcome, <a href="/member/<%= session.user._id %>/update"> <%= session.user.memberName %> </a> |
+              Welcome, 
+              <a href="/member/<%= session.user._id %>/update" <% if (session.user.isAdmin) { %>style="color: red;"<% } %>>
+              <%= session.user.memberName %>
+              </a> |
               <form action="/auth/logout" method="POST" style="display:inline;">
-                <button type="submit" class="button is-light">Logout</button>
+              <button type="submit" class="button is-light">Logout</button>
               </form>
             </p>
             <% } else { %>
             <div class="buttons">
-              <a class="button is-primary" href="/auth/register">
+              <a class="button is-black" href="/auth/register">
                 <strong>Sign up</strong>
               </a>
               <a class="button is-light" href="/auth/login"> Log in </a>

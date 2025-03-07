@@ -115,7 +115,7 @@ exports.deleteBrandView = async (req, res) => {
     const perfumes = await Perfume.find({ brand: req.params.brandId });
 
     if (perfumes.length > 0) {
-      req.flash("error_msg", "Brand has associated perfumes, cannot delete");
+      req.flash("error_msg", "Cannot Delete Brand with associated Perfumes");
       return res.redirect("/brand");
     }
     const brand = await Brand.findByIdAndDelete(req.params.brandId);

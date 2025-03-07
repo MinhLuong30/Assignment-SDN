@@ -1,7 +1,7 @@
 <div>
   <form action="/" method="GET" class="is-flex is-justify-content-end mt-5">
-    <div class="field has-addons">
-      <div class="control">
+    <div class="field has-addons columns is-multiline is-gapless">
+      <div class="control column is-two-quarters">
         <input
           class="input"
           type="text"
@@ -10,7 +10,7 @@
           value="<%= search %>"
         />
       </div>
-      <div class="control">
+      <div class="control column is-one-quarter">
         <div class="select">
           <select name="brand">
             <option value="">All Brands</option>
@@ -20,38 +20,37 @@
           </select>
         </div>
       </div>
-      <div class="control">
-        <button class="button is-info" type="submit">Search</button>
+      <div class="control column is-one-quarter">
+        <button class="button is-black" type="submit">Search</button>
       </div>
     </div>
   </form>
 
-  <div class="columns is-multiline mt-5">
+  <div class="columns is-multiline mt-5" style="user-select: none;">
     <% perfumes.forEach(perfume => { %>
-    <div class="column is-half">
-      <div class="card card-home">
+    <div class="column is-one-quarter">
+      <div class="card is-fullheight is-Hoverable" onclick="window.location.href='/perfume/<%= perfume._id %>'"> 
         <% if (perfume.concentration === 'Extrait') { %>
         <div class="ribbon">Extrait</div>
         <% } %>
 
         <div class="card-image">
           <figure class="image is-4by3">
-            <img src="<%= perfume.uri %>" alt="Placeholder image" class="img-perfume" />
+            <img src="<%= perfume.uri %>" alt="Placeholder image" />
           </figure>
         </div>
-        <div class="card-content">
+        <div class="card-content is-flex-grow-1">
           <div class="media">
             <div class="media-content">
               <p class="title is-4"><%= perfume.perfumeName %></p>
             </div>
           </div>
-          <div class="content">
+          <div class="content is-fullheight" style="height: 12vw; max-height: 170px;">
             <p><%= perfume.description %></p>
             <p>Volume: <%= perfume.volume %>ml</p>
             <p>Target Audience: <%= perfume.targetAudience %></p>
             <p>Brand: <%= perfume.brand.brandName %></p>
           </div>
-            <a href="perfume/<%= perfume._id %>" class="button is-primary"> View Detail</a>
         </div>
       </div>
     </div>

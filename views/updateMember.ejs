@@ -1,6 +1,6 @@
-<div class="columns is-centered">
-  <div class="column is-half">
-    <h1 class="title has-text-centered">Member Profile</h1>
+<div class="columns is-centered " style="height: 100vh; padding-top: 10%">
+  <div class="column is-one-quarter">
+    <h1 class="title has-text-centered">User Profile</h1>
     <form action="/member/<%= user._id %>/update" method="POST" id="updateForm">
       <div class="field">
         <label class="label">Name</label>
@@ -40,10 +40,10 @@
         </div>
       </div>
       <div class="control">
-        <button type="button" class="button is-primary is-fullwidth" id="editButton">
+        <button type="button" class="button is-black is-fullwidth" id="editButton">
           Update
         </button>
-        <button type="submit" class="button is-primary is-fullwidth" style="display: none;" id="submitButton">
+        <button type="submit" class="button is-info is-fullwidth" style="display: none;" id="submitButton">
           Save Changes
         </button>
         <h3 class="has-text-centered">Or</h3>

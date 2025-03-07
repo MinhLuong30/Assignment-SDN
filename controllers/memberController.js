@@ -5,6 +5,9 @@ const bcrypt = require("bcryptjs");
 exports.updateMember = async (req, res) => {
   try {
     const { memberName, yob, gender } = req.body;
+    console.log("memberName", memberName);
+    console.log("yob", yob);
+    console.log("gender", gender);
     if (req.session.user._id !== req.params.memberId) {
       return res.status(403).send("You can only update your own information");
     }
@@ -31,6 +34,8 @@ exports.updateMember = async (req, res) => {
 exports.changePassword = async (req, res) => {
   try {
     const { oldPassword, newPassword } = req.body;
+    console.log("oldPassword", oldPassword);
+    console.log("newPassword", newPassword);
     const member = await Member.findById(req.session.user._id);
     if (!(await bcrypt.compare(oldPassword, member.password))) {
       req.flash("error_msg", "Old password is incorrect");

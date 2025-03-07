@@ -29,7 +29,7 @@ connect.then(
 
 app.use(
   session({
-    secret: "mysecretkey123456789asdfghjklzxcvbnm", // Change this to a secure secret key
+    secret: process.env.SESSION_SECRET,
     resave: false,
     saveUninitialized: true,
     cookie: { secure: false }, // Set to true if using HTTPS
