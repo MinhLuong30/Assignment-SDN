@@ -21,14 +21,15 @@
       }
       .ribbon {
         position: absolute;
-        top: 10px;
-        left: 90%;
-        background: red;
-        color: white;
+        top: 0;
+        left: 80%;
+        background: black;
+        color: red;
         padding: 5px 15px;
         font-size: 14px;
         font-weight: bold;
-        transform: rotate(45deg);
+        border-top-right-radius: 10px ;
+        border-bottom-right-radius: 10px ;
         box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
         z-index: 50;
       }
@@ -41,10 +42,10 @@
 
       <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
-          <a class="navbar-item" href="/"> SDN302 Official Perfume Store </a>
+          <a class="navbar-item" style="background-color: black; color: white; " href="/"> SDN302 Official Perfume Store </a>
            <% if (session && session.user && session.user.isAdmin) { %>
             <div class="navbar-item has-dropdown is-hoverable">
-              <a class="navbar-link"> Manage </a>
+              <a class="navbar-link" style="background-color: rgb(240, 237, 55); color: black;"> Manage </a>
               <div class="navbar-dropdown">
                 <a class="navbar-item" href="/brand"> Manage Brand </a>
                 <a class="navbar-item" href="/perfume"> Manage Perfume </a>

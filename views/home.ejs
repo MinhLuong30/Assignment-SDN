@@ -51,6 +51,15 @@
             <p>Target Audience: <%= perfume.targetAudience %></p>
             <p>Brand: <%= perfume.brand.brandName %></p>
           </div>
+          <footer class=" " 
+                  style="flex: auto; text-align: center; 
+                          align-items: center; margin-bottom: -5%; 
+                          padding-top: 5%; color: red; font-weight: bold;
+                          font-size: 1.3rem; border-top: 1px solid #dbdbdb;
+                          "
+          >
+            <p><%= perfume.price.toLocaleString() %></p>
+          </footer>
         </div>
       </div>
     </div>

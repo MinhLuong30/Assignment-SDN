@@ -4,6 +4,8 @@
     <tr>
       <th>Member Id</th>
       <th>Member's name</th>
+      <th>Year of Birth</th>
+      <th>Gender</th>
     </tr>
   </thead>
   <tbody>
@@ -11,6 +13,8 @@
     <tr>
       <td><%= member._id %></td>
       <td><%= member.memberName %></td>
+      <td><%= member.yob %></td>
+      <td><%= member.gender === true ? 'Male' : 'Female' %></td>
     </tr>
     <% }); %>
   </tbody>

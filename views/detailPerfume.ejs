@@ -1,4 +1,4 @@
-<div class="columns is-centered">
+<div class="columns is-centered " style="height: 100vh; padding-top: 3%; margin-bottom: 5%;  ">
   <div class="column is-half">
     <div class="card">
       <div class="card-image">
@@ -24,12 +24,12 @@
       </div>
     </div>
   </div>
-    <div class="column">
+    <div class="column ">
       <h2 class="title">Comments</h2>
       <% if (perfume.comments.length > 0) { %> <%
       perfume.comments.forEach(comment => { %>
       <div class="box">
-        <p><strong>Rating:</strong> <%= comment.rating %>/3</p>
+        <p><strong>Rating:</strong> <%= comment.rating %>/5</p>
         <p><strong>Comment:</strong> <%= comment.content %></p>
         <p><strong>Author:</strong> <%= comment.author.memberName %></p>
         <p><small><%= comment.createdAt.toDateString() %></small></p>
